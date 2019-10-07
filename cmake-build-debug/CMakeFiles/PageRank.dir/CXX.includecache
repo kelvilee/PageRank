@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/kelvin/CLionProjects/PageRank/matrix.cpp
+matrix.hpp
+/Users/kelvin/CLionProjects/PageRank/matrix.hpp
+
+/Users/kelvin/CLionProjects/PageRank/matrix.hpp
+ostream
+-
+iostream
+-
+cmath
+-
+
