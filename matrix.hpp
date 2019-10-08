@@ -16,8 +16,9 @@ using namespace std;
 class myMatrix
 {
 private:
+    int num_row;
+    int num_col;
     double** matrix;
-    int num_row, num_col;
 
 public:
     myMatrix();

@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/kelvin/CLionProjects/PageRank/matrix.cpp
+/Users/kelvin/CLionProjects/PageRank/main.cpp
+iostream
+-
 matrix.hpp
 /Users/kelvin/CLionProjects/PageRank/matrix.hpp
 

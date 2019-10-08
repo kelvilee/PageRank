@@ -10,10 +10,12 @@ int main() {
         double degree_c[4];
         double arr[n] = {0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0};
         myMatrix connectivity_matrix{arr, n};
+
         double arr_2[n] = {0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25};
         myMatrix teleport_matrix{arr_2, n};
-        cout << connectivity_matrix << endl;
+        cout << "Connectivity Matrix\n" << connectivity_matrix << endl;
         // degree col
+        cout << "Degree Matrix" << endl;
         for(int i = 0; i < 4; i++)
         {
             for(int j = 0; j < 4; j++)
@@ -23,6 +25,7 @@ int main() {
             cout << degree_c[i] << endl;
         }
 
+        cout << "\nStochiastic Matrix" << endl;
         // stochiastic matrix
         for(int i = 0; i < 4; i++)
         {
@@ -56,6 +59,7 @@ int main() {
             }
         }
         transition = connectivity_matrix + teleport_matrix;
+        cout << "Transition Matrix" << endl;
         cout << transition << endl;
 
         // column matrix rank
@@ -64,21 +68,16 @@ int main() {
         {
             col_rank.set_value(i, 0, 1.0);
         }
-        cout << col_rank << endl;
+        cout << "Column Rank Matrix\n" << col_rank << endl;
 
         // markov process
-//        myMatrix result{4,1};
-//        cout << result << endl;
-//        result = (transition * col_rank);
-        int i = 0;
-        while(true)
-        {
-            if(col_rank == (transition * col_rank))
-                break;
-            cout << "iteration: " << ++i << endl;
-            col_rank = (transition * col_rank);
+//        cout << transition * col_rank << endl;
+        int count = 1;
+        while(transition * col_rank != col_rank) {
+            col_rank = transition * col_rank;
+            cout << "Iteration: " << count++ << endl;
+            cout << col_rank << endl;
         }
-        cout << col_rank << endl;
 
 
     } catch (const char * msg) {
