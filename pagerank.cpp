@@ -27,7 +27,6 @@ void execute_page_rank() {
             k++;
         }
         myMatrix con_matrix{arr_1, num_of_elements};
-//        cout << "Connection Matrix\n" << con_matrix << endl;
 
 
         //********** DEGREE MATRIX ***************
@@ -38,7 +37,6 @@ void execute_page_rank() {
                     deg_matrix.set_value(0, j, (deg_matrix.get_value(0, j) + 1));
             }
         }
-//        cout << "Degree Matrix\n" << deg_matrix << endl;
 
         //************ STOCHIASTIC MATRIX ***********
         myMatrix stoch_matrix = con_matrix;
@@ -52,7 +50,6 @@ void execute_page_rank() {
                     stoch_matrix.set_value(i, j, (con_val / deg_matrix.get_value(0, j)));
             }
         }
-//        cout << "Stochiastic Matrix\n" << stoch_matrix << endl;
 
         //********** TELEPORTATION MATRIX ***************
         myMatrix tele_matrix{size};
@@ -61,7 +58,6 @@ void execute_page_rank() {
                 tele_matrix.set_value(i, j, 1.0 / size);
             }
         }
-//        cout << "Teleportation Matrix\n" << tele_matrix << endl;
 
         //************ TRANSITION MATRIX ***********
         myMatrix trans_matrix{size};
@@ -78,21 +74,16 @@ void execute_page_rank() {
             }
         }
         trans_matrix = stoch_matrix + tele_matrix;
-//        cout << "Transition Matrix\n" << trans_matrix << endl;
 
         //************ COLUMN MATRIX RANK ***********
         myMatrix col_rank{size, 1};
         for (int i = 0; i < size; i++) {
             col_rank.set_value(i, 0, 1);
         }
-//        cout << "Column Rank Matrix\n" << col_rank << endl;
 
         //************ MARKOV PROCESS ***********
-//        int count = 1;
         while (trans_matrix * col_rank != col_rank) {
             col_rank = trans_matrix * col_rank;
-//            cout << "Iteration: " << count++ << endl;
-//            cout << col_rank << endl;
         }
 
         //************ PAGE RANK ***********
@@ -115,7 +106,7 @@ void execute_page_rank() {
                     cout << "Page C: " << col_rank.get_value(i, 0) << "%" << endl;
                     break;
                 case 3 :
-                    cout << "Page D: " << col_rank.get_value(i, 0) << "%" << endl;
+                    cout << "Page D: " << setw(5) << right << col_rank.get_value(i, 0) << "%" << endl;
                     break;
                 default:
                     break;

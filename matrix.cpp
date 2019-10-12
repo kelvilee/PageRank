@@ -104,8 +104,9 @@ bool operator==(const myMatrix &lhs, const myMatrix &rhs) {
         return false;
     for (int i = 0; i < lhs.num_row; i++) { // row
         for (int j = 0; j < lhs.num_col; j++) { // col
-            if (abs((lhs.get_value(i, j) - rhs.get_value(i, j))) >= THRESHOLD) // checking if accurate to 0.001
+            if (abs((lhs.get_value(i, j) - rhs.get_value(i, j))) > THRESHOLD) {
                 return false;
+            }
         }
     }
     return true;

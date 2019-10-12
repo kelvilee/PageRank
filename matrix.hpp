@@ -11,7 +11,7 @@
 #include <stdexcept>
 #include <iomanip>
 
-constexpr double THRESHOLD = 0.001;
+constexpr double THRESHOLD = 0.0001;
 
 using namespace std;
 
