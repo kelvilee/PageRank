@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/kelvin/CLionProjects/PageRank/main.cpp
-iostream
--
-matrix.hpp
-/Users/kelvin/CLionProjects/PageRank/matrix.hpp
-
 /Users/kelvin/CLionProjects/PageRank/matrix.hpp
 ostream
 -
@@ -19,4 +13,18 @@ iostream
 -
 cmath
 -
+stdexcept
+-
+
+/Users/kelvin/CLionProjects/PageRank/pagerank.cpp
+pagerank.hpp
+/Users/kelvin/CLionProjects/PageRank/pagerank.hpp
+
+/Users/kelvin/CLionProjects/PageRank/pagerank.hpp
+iostream
+-
+fstream
+-
+matrix.hpp
+/Users/kelvin/CLionProjects/PageRank/matrix.hpp
 

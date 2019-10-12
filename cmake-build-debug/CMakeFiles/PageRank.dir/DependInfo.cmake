@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/kelvin/CLionProjects/PageRank/main.cpp" "/Users/kelvin/CLionProjects/PageRank/cmake-build-debug/CMakeFiles/PageRank.dir/main.cpp.o"
   "/Users/kelvin/CLionProjects/PageRank/matrix.cpp" "/Users/kelvin/CLionProjects/PageRank/cmake-build-debug/CMakeFiles/PageRank.dir/matrix.cpp.o"
+  "/Users/kelvin/CLionProjects/PageRank/pagerank.cpp" "/Users/kelvin/CLionProjects/PageRank/cmake-build-debug/CMakeFiles/PageRank.dir/pagerank.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

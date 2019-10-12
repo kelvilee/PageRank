@@ -6,14 +6,13 @@
 
 myMatrix::myMatrix() {
     num_row = num_col = 1;
-    matrix = new double *[1];
-//    matrix = new double *[num_row]; // rows
-//    *matrix = new double[num_col]{0.0};
+    matrix = new double *[num_row]; // rows
+    matrix[0] = new double[num_col]{0.0};
 }
 
 myMatrix::myMatrix(int n) {
     if (n <= 0)
-        throw "Matrix must be initialized with a positive integer";
+        throw invalid_argument("Matrix must be initialized with a positive integer");
     num_row = num_col = n;
     matrix = new double *[num_row]; // rows
     for (int i = 0; i < n; i++)
@@ -22,7 +21,7 @@ myMatrix::myMatrix(int n) {
 
 myMatrix::myMatrix(int r, int c) {
     if (r <= 0 || c <= 0)
-        throw "Matrix must be initialized with a positive integer";
+        throw invalid_argument("Matrix must be initialized with a positive integer");
     num_row = r;
     num_col = c;
     matrix = new double *[num_row]; // rows
@@ -30,9 +29,9 @@ myMatrix::myMatrix(int r, int c) {
         matrix[i] = new double[num_col] {0.0};
 }
 
-myMatrix::myMatrix(double *arr, size_t n) {
+myMatrix::myMatrix(double *arr, int n) {
     if (n <= 0 || sqrt(n) - floor(sqrt(n)) != 0)
-        throw "Size of array must be a perfect square and a positive integer";
+        throw invalid_argument("Size of array must be a perfect square and a positive integer");
     int index = 0;
     num_row = num_col = sqrt(n);
     matrix = new double *[num_row]; // rows
@@ -72,13 +71,14 @@ myMatrix::~myMatrix() {
 }
 
 void myMatrix::set_value(int row, int col, double val) {
-//    if(val < 0 || val > 1000) //TODO ask what is too large and add a constexpr
-//        throw "Cannot set negative or large numbers";
+    if(row > num_row || col > num_col)
+        throw invalid_argument("row or column specified is outside of bounds");
     matrix[row][col] = val;
 }
 
 double myMatrix::get_value(int row, int col) const {
-    // TODO throw exception if integers are negative or too large?
+    if(row > num_row || col > num_col)
+        throw invalid_argument("row or column specified is outside of bounds");
     return matrix[row][col];
 }
 
@@ -132,7 +132,6 @@ myMatrix myMatrix::operator++(int) //postfix counter++
     myMatrix tmp(*this);
     operator++();
     return tmp;
-    //TODO fix bug
 }
 
 myMatrix &myMatrix::operator--() //prefix --counter
@@ -151,7 +150,6 @@ myMatrix myMatrix::operator--(int) //postfix counter--
     myMatrix tmp(*this);
     operator--();
     return tmp;
-    //TODO fix bug
 }
 
 myMatrix &myMatrix::operator=(myMatrix other) {
@@ -168,7 +166,7 @@ void mySwap(myMatrix &first, myMatrix &second) {
 
 myMatrix &myMatrix::operator+=(const myMatrix &rhs) {
     if (num_row != rhs.num_row || num_col != rhs.num_col)
-        throw "Addition of matrices must have same size";
+        throw invalid_argument("Addition of matrices must have same size");
     for (int i = 0; i < num_row; i++) { // row
         for (int j = 0; j < num_col; j++) { // col
             set_value(i, j, matrix[i][j] + rhs.matrix[i][j]);
@@ -184,7 +182,7 @@ myMatrix operator+(myMatrix lhs, const myMatrix &rhs) {
 
 myMatrix &myMatrix::operator-=(const myMatrix &rhs) {
     if (num_row != rhs.num_row || num_col != rhs.num_col)
-        throw "Subtraction of matrices must have same size";
+        throw invalid_argument("Subtraction of matrices must have same size");
     for (int i = 0; i < num_row; i++) { // row
         for (int j = 0; j < num_col; j++) { // col
             set_value(i, j, matrix[i][j] - rhs.matrix[i][j]);
@@ -200,7 +198,7 @@ myMatrix operator-(myMatrix lhs, const myMatrix &rhs) {
 
 myMatrix &myMatrix::operator*=(const myMatrix &rhs) {
     if (num_col != rhs.num_row)
-        throw "Multiplication of matrices must be [x][y] * [y][z]";
+        throw invalid_argument("Multiplication of matrices must be [x][y] * [y][z]");
     myMatrix tmp{num_row, rhs.num_col}; // need a new sized matrix
     for (int i = 0; i < num_row; i++) { // this num or row
         for (int j = 0; j < rhs.num_col; j++) { // rhs num of col

@@ -8,6 +8,7 @@
 #include <ostream>
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
 
 constexpr double THRESHOLD = 0.001;
 
@@ -15,16 +16,16 @@ using namespace std;
 
 class myMatrix
 {
-private:
+protected:
     int num_row;
     int num_col;
-    double** matrix;
+    double** matrix = nullptr;
 
 public:
     myMatrix();
     myMatrix(int n);
     myMatrix(int r, int c);
-    myMatrix(double *arr, size_t n);
+    myMatrix(double *arr, int n);
     myMatrix(const myMatrix& other); // copy ctr
     ~myMatrix();
 

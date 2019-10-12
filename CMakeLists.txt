@@ -3,4 +3,4 @@ project(PageRank)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(PageRank main.cpp matrix.cpp matrix.hpp)
+add_executable(PageRank main.cpp matrix.cpp matrix.hpp pagerank.cpp pagerank.hpp)
