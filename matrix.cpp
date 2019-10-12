@@ -66,7 +66,6 @@ myMatrix::~myMatrix() {
             delete[] matrix[i];
         }
         delete[] matrix;
-        cout << "matrix deleted" << endl;
     }
 }
 
@@ -93,7 +92,7 @@ void myMatrix::clear() {
 ostream &operator<<(ostream &os, const myMatrix &mx) {
     for (int i = 0; i < mx.num_row; i++) { // row
         for (int j = 0; j < mx.num_col; j++) { // col
-            os << fixed << mx.get_value(i, j) << " ";
+            os << mx.get_value(i, j) << " ";
         }
         os << endl;
     }
